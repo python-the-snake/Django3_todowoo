@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import login
 
+def home(request):
+    return render(request, 'todo/home.html')
+
+
 def signupuser(request):
     if request.method == 'GET':
         return render(request, 'todo/signupuser.html', {'form':UserCreationForm()})
@@ -16,13 +20,21 @@ def signupuser(request):
                 login(request, user)
                 return redirect('currenttodos')
 
-            except IntegrityError:
+           except IntegrityError:
                 return render(request, 'todo/signupuser.html',
                               {'form': UserCreationForm(), 'error': "That username is already been taken. Please choose a new username"})
 
         else:
             return render(request, 'todo/signupuser.html', {'form': UserCreationForm(),
                                                             'error':"Passwords didn't match"})
+def logoutuser(request):
+    if request.method == "POST":
+        logout(request)
+        return redirect('home')
+
+
+
+
 
 def currenttodos(request):
     return render(request, 'todo/currenttodos.html', )

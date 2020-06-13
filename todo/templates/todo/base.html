@@ -7,16 +7,17 @@
         <p>
             Logged in as {{ user.username }}
         </p>
-
         {% if user.is_authenticated %}
-
-        <a href="#">Log out</a>
         <a href="#">Login</a>
+        <form action="{%  url 'logoutuser' %}" method="POST">
+           {% csrf_token %}
+            <button type="submit">
+                Logout
+            </button>
+        </form>
         {% else %}
         <a href="#">Sign Up</a>
         {% endif %}
-
-
         {% block content %}{% endblock %}
     </body>
 </html>
