@@ -2,9 +2,11 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>signup</title>
+        <title>Sign Up</title>
     </head>
     <body>
+        {% extends 'todo/base.html' %}
+        {% block content %}
         <h1>Sign Up</h1>
         <h2>
             {{ error }}
@@ -15,6 +17,7 @@
             <button type="submit">
                 Sign Up
             </button>
+        {% endblock %}
         </form>
     </body>
 </html>
