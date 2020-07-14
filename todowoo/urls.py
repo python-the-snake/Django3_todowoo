@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from todo import views
+import numba
 
 urlpatterns = [
     path('admin/', admin.site.urls),
